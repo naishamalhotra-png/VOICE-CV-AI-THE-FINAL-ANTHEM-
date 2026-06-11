@@ -652,35 +652,35 @@ if (generatedData.references) {
   // General Navbar component
   const renderNavbar = () => {
     return (
-      <header className="sticky top-0 z-50 w-full border-b border-slate-200/40 bg-white/70 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/60 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo */}
           <div
             onClick={() => setCurrentView("home")}
             className="flex items-center gap-2.5 cursor-pointer transition active:scale-95 group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-500 flex items-center justify-center shadow-lg shadow-indigo-200 transition-all duration-300 group-hover:scale-105 group-hover:rotate-3">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all duration-300 group-hover:scale-105 group-hover:rotate-3">
               <Mic className="w-4.5 h-4.5 text-white" />
             </div>
-            <span className="text-xl font-black tracking-tight text-slate-900 font-sans">
-              VoiceCV<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 font-extrabold font-sans">.AI</span>
+            <span className="text-xl font-black tracking-tight text-white font-display">
+              VoiceCV<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500 font-extrabold font-display">.AI</span>
             </span>
           </div>
 
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-6">
-            <button onClick={() => setCurrentView("home")} className={`text-sm font-semibold transition ${currentView === "home" ? "text-indigo-600" : "text-slate-500 hover:text-slate-900"} cursor-pointer`}>
+            <button onClick={() => setCurrentView("home")} className={`text-sm font-semibold transition ${currentView === "home" ? "text-cyan-400" : "text-slate-500 hover:text-white"} cursor-pointer`}>
               Home
             </button>
-            <button onClick={() => { setCurrentView("builder"); setActiveAccordion("personal"); }} className={`text-sm font-semibold transition ${currentView === "builder" ? "text-indigo-600" : "text-slate-500 hover:text-slate-900"} cursor-pointer`}>
+            <button onClick={() => { setCurrentView("builder"); setActiveAccordion("personal"); }} className={`text-sm font-semibold transition ${currentView === "builder" ? "text-cyan-400" : "text-slate-500 hover:text-white"} cursor-pointer`}>
               Resume Builder
             </button>
             {currentUser && (
-              <button onClick={() => setCurrentView("history")} className={`text-sm font-semibold transition ${currentView === "history" ? "text-indigo-600" : "text-slate-500 hover:text-slate-900"} cursor-pointer`}>
+              <button onClick={() => setCurrentView("history")} className={`text-sm font-semibold transition ${currentView === "history" ? "text-cyan-400" : "text-slate-500 hover:text-white"} cursor-pointer`}>
                 Saved Resumes
               </button>
             )}
-            <a href="#features-deck" onClick={() => { if (currentView !== "home") setCurrentView("home"); }} className="text-sm font-semibold text-slate-500 hover:text-slate-900 transition cursor-pointer">
+            <a href="#features-deck" onClick={() => { if (currentView !== "home") setCurrentView("home"); }} className="text-sm font-semibold text-slate-500 hover:text-white transition cursor-pointer">
               Features
             </a>
           </nav>
@@ -689,9 +689,9 @@ if (generatedData.references) {
           <div className="flex items-center gap-3">
             {currentUser ? (
               <div className="flex items-center gap-3">
-                <div onClick={() => setCurrentView("history")} className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 cursor-pointer hover:bg-slate-100 transition shadow-sm animate-fade-in">
-                  <User className="w-3.5 h-3.5 text-slate-600" />
-                  <span className="text-xs font-semibold text-slate-700">{currentUser.displayName || currentUser.email}</span>
+                <div onClick={() => setCurrentView("history")} className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 cursor-pointer hover:bg-white/5 transition shadow-sm animate-fade-in">
+                  <User className="w-3.5 h-3.5 text-slate-500" />
+                  <span className="text-xs font-semibold text-slate-300">{currentUser.displayName || currentUser.email}</span>
                 </div>
                 <button
                   onClick={handleSignOut}
@@ -706,7 +706,7 @@ if (generatedData.references) {
               <button
                 onClick={() => { setAuthMode("login"); setCurrentView("auth"); }}
                 id="btn-nav-signin"
-                className="bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white text-xs font-bold px-6 py-2.5 rounded-full shadow-md shadow-indigo-200 transition-all duration-200 active:scale-95 cursor-pointer"
+                className="bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:from-cyan-300 hover:to-fuchsia-400 text-white text-xs font-bold px-6 py-2.5 rounded-full glow-cyan transition-all duration-200 active:scale-95 cursor-pointer"
               >
                 Sign In
               </button>
@@ -723,19 +723,20 @@ if (generatedData.references) {
       <div className="flex flex-col gap-16 py-10 antialiased">
         {/* Hero Area */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 py-12 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-150 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-sm shadow-indigo-100/50">
-            <span className="w-2 h-2 bg-indigo-600 rounded-full animate-ping"></span>
+          <div className="absolute inset-x-0 top-0 h-[420px] grid-backdrop pointer-events-none -z-10"></div>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-fuchsia-300 text-xs font-bold uppercase tracking-wider shadow-sm shadow-cyan-500/10">
+            <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
             Empowered by Sarvam AI & NVIDIA AI
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight max-w-4xl mx-auto leading-[1.12]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-[1.12] font-display">
             Build Professional ATS-Friendly Resumes{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 font-serif italic font-normal">
+            <span className="gradient-text-animated font-serif italic font-normal">
               With Your Voice.
             </span>
           </h1>
           
-          <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed font-light">
             Speak in any Indian regional language. Our system transcribes, structures, translates to English, and compiles printable job portfolios in seconds.
           </p>
 
@@ -750,7 +751,7 @@ if (generatedData.references) {
                 }
               }}
               id="btn-hero-build-resume"
-              className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-indigo-200 transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-gradient-to-r from-cyan-400 to-fuchsia-500 hover:from-cyan-300 hover:to-fuchsia-400 text-white font-bold text-sm px-8 py-3.5 rounded-full glow-cyan transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2"
             >
               Build Resume Now <ArrowRight className="w-4.5 h-4.5" />
             </button>
@@ -758,7 +759,7 @@ if (generatedData.references) {
             {!currentUser && (
               <button
                 onClick={() => { setAuthMode("login"); setCurrentView("auth"); }}
-                className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold text-sm px-8 py-3.5 rounded-full shadow-sm transition active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 font-bold text-sm px-8 py-3.5 rounded-full shadow-sm transition active:scale-95 cursor-pointer"
               >
                 Sign In
               </button>
@@ -767,10 +768,10 @@ if (generatedData.references) {
         </section>
 
         {/* Steps visual workflow */}
-        <section className="bg-white/40 backdrop-blur-md border-y border-slate-100 py-16">
+        <section className="bg-white/[0.02] backdrop-blur-xl border-y border-white/5 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center space-y-2 mb-12">
-              <h2 className="text-2xl font-bold text-slate-900">How It Works</h2>
+              <h2 className="text-2xl font-bold text-white font-display">How It Works</h2>
               <p className="text-xs text-slate-500 font-medium">Transform voice to a stellar certified resume in four simple steps</p>
             </div>
 
@@ -781,9 +782,9 @@ if (generatedData.references) {
                 { step: "03", title: "AI Real-time Structuring", desc: "Sarvam & AI translate and format details into 20 mandatory fields." },
                 { step: "04", title: "Review & Save", desc: "Fine-tune with live ATS scoring suggestions, select your template, and download standard PDF." }
               ].map((item, idx) => (
-                <div key={idx} className="bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-indigo-50/60 shadow-lg shadow-indigo-100/20 relative space-y-3 transition-transform hover:-translate-y-1">
-                  <span className="text-2xl font-black text-indigo-650/20 block">{item.step}</span>
-                  <h3 className="font-bold text-slate-900 text-sm">{item.title}</h3>
+                <div key={idx} className="bg-white/[0.03] backdrop-blur-xl p-6 rounded-3xl border border-cyan-500/20 shadow-lg shadow-cyan-500/10 relative space-y-3 transition-all hover:-translate-y-1 hover:border-fuchsia-400/40 hover:shadow-fuchsia-500/20">
+                  <span className="text-3xl font-black gradient-text font-display block">{item.step}</span>
+                  <h3 className="font-bold text-white text-sm">{item.title}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-light">{item.desc}</p>
                 </div>
               ))}
@@ -794,7 +795,7 @@ if (generatedData.references) {
         {/* Features deck */}
         <section id="features-deck" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 py-6">
           <div className="text-center space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900">Platform Features</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-white font-display">Platform Features</h2>
             <p className="text-sm text-slate-500 max-w-md mx-auto">Everything you need to successfully bypass automatic corporate filters.</p>
           </div>
 
@@ -809,11 +810,11 @@ if (generatedData.references) {
               { title: "Real-Time Preview", desc: "Every edit in details updates the active templates instantly. Know exactly how it looks before saving." },
               { title: "AI Content Enhancement", desc: "Automatically translates conversational speech transcripts into standard recruiter action items." }
             ].map((feat, idx) => (
-              <div key={idx} className="p-6 rounded-3xl border border-indigo-50/50 bg-white/75 backdrop-blur-md shadow-md shadow-slate-100 hover:shadow-xl hover:shadow-indigo-100/30 transition-all duration-300 space-y-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50/60 flex items-center justify-center text-indigo-600">
-                  <CheckCircle className="w-5 h-5 text-indigo-500" />
+              <div key={idx} className="p-6 rounded-3xl border border-cyan-500/15 bg-white/[0.03] backdrop-blur-xl shadow-md shadow-black/20 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 space-y-3">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/15 to-fuchsia-500/15 flex items-center justify-center text-cyan-400">
+                  <CheckCircle className="w-5 h-5 text-cyan-400" />
                 </div>
-                <h3 className="text-sm font-bold text-slate-900">{feat.title}</h3>
+                <h3 className="text-sm font-bold text-white">{feat.title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed font-light">{feat.desc}</p>
               </div>
             ))}
@@ -822,11 +823,12 @@ if (generatedData.references) {
 
         {/* Home CTA footer */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-          <div className="bg-gradient-to-tr from-slate-950 via-indigo-950 to-indigo-900 py-16 rounded-3xl shadow-xl shadow-indigo-950/20 text-white text-center px-6 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(99,102,241,0.15),transparent)] pointer-events-none"></div>
+          <div className="bg-gradient-to-tr from-slate-950 via-violet-950 to-fuchsia-950 py-16 rounded-3xl border border-white/10 shadow-xl shadow-fuchsia-900/30 text-white text-center px-6 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(34,211,238,0.22),transparent_55%)] pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(232,121,249,0.18),transparent_55%)] pointer-events-none"></div>
             <div className="max-w-4xl mx-auto space-y-6 relative z-10">
-              <h3 className="text-3xl sm:text-4xl font-extrabold font-sans">Ready to Craft an Interview-Ready Resume?</h3>
-              <p className="text-indigo-200 text-sm max-w-lg mx-auto font-light">Skip the tedious typing and write your summary simply using your own regional voice.</p>
+              <h3 className="text-3xl sm:text-4xl font-extrabold font-display">Ready to Craft an Interview-Ready Resume?</h3>
+              <p className="text-cyan-200 text-sm max-w-lg mx-auto font-light">Skip the tedious typing and write your summary simply using your own regional voice.</p>
               <button
                 onClick={() => {
                   if (currentUser) {
@@ -836,7 +838,7 @@ if (generatedData.references) {
                     setCurrentView("auth");
                   }
                 }}
-                className="bg-white text-indigo-950 hover:bg-indigo-50 font-bold text-xs px-8 py-4 rounded-full shadow transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                className="bg-white text-violet-950 hover:bg-cyan-100 font-bold text-xs px-8 py-4 rounded-full shadow transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               >
                 Get Started Free
               </button>
@@ -851,9 +853,9 @@ if (generatedData.references) {
   const renderAuthView = () => {
     return (
       <div className="max-w-md mx-auto my-16 px-4">
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg space-y-6">
+        <div className="glass-panel p-8 rounded-2xl shadow-lg space-y-6">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-2xl font-bold tracking-tight text-white font-display">
               {authMode === "login" ? "Welcome Back to VoiceCV" : "Create Your VoiceCV Account"}
             </h2>
             <p className="text-xs text-slate-500">
@@ -864,33 +866,33 @@ if (generatedData.references) {
           </div>
 
           {authError && (
-            <div className="bg-rose-50 text-rose-700 text-xs p-3.5 rounded-lg border border-rose-100">
+            <div className="bg-rose-500/10 text-rose-300 text-xs p-3.5 rounded-lg border border-rose-500/30">
               {authError}
             </div>
           )}
 
           <form onSubmit={handleAuthSubmit} className="space-y-4">
             <div>
-              <label className="text-xs font-semibold text-slate-600 block mb-1">Email address</label>
+              <label className="text-xs font-semibold text-slate-500 block mb-1">Email address</label>
               <input
                 type="email"
                 required
                 value={authEmail}
                 onChange={(e) => setAuthEmail(e.target.value)}
                 placeholder="developer@example.com"
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-inner"
+                className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 shadow-inner"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-600 block mb-1">Security Password</label>
+              <label className="text-xs font-semibold text-slate-500 block mb-1">Security Password</label>
               <input
                 type="password"
                 required
                 value={authPassword}
                 onChange={(e) => setAuthPassword(e.target.value)}
                 placeholder="********"
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-inner"
+                className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 shadow-inner"
               />
             </div>
 
@@ -898,7 +900,7 @@ if (generatedData.references) {
               type="submit"
               disabled={authLoading}
               id="btn-auth-submit"
-              className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-medium text-sm py-2.5 rounded-xl shadow-md transition cursor-pointer"
+              className="w-full bg-gradient-to-r from-cyan-500 to-fuchsia-500 hover:from-cyan-400 hover:to-fuchsia-400 disabled:opacity-50 text-white font-bold text-sm py-2.5 rounded-xl glow-cyan transition cursor-pointer"
             >
               {authLoading ? "Synchronizing database security..." : authMode === "login" ? "Sign In" : "Register Credentials"}
             </button>
@@ -907,15 +909,15 @@ if (generatedData.references) {
           {/* Google Sign In Auth */}
           <div className="space-y-4 pt-2">
             <div className="relative flex py-2 items-center">
-              <div className="flex-grow border-t border-slate-200"></div>
-              <span className="flex-shrink mx-4 text-xs font-medium text-slate-400">or use single sign-on</span>
-              <div className="flex-grow border-t border-slate-200"></div>
+              <div className="flex-grow border-t border-white/10"></div>
+              <span className="flex-shrink mx-4 text-xs font-medium text-slate-500">or use single sign-on</span>
+              <div className="flex-grow border-t border-white/10"></div>
             </div>
 
             <button
               onClick={signInWithGoogleHandler}
               id="btn-google-auth-trigger"
-              className="w-full bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200/85 font-medium text-xs py-2.5 rounded-xl shadow-sm transition cursor-pointer flex items-center justify-center gap-2"
+              className="w-full bg-white/[0.03] hover:bg-white/5 text-slate-300 hover:text-white border border-white/10 font-medium text-xs py-2.5 rounded-xl shadow-sm transition cursor-pointer flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -930,7 +932,7 @@ if (generatedData.references) {
           <div className="text-center pt-2">
             <button
               onClick={() => setAuthMode((prev) => (prev === "login" ? "register" : "login"))}
-              className="text-xs font-semibold text-indigo-600 hover:underline cursor-pointer"
+              className="text-xs font-semibold text-cyan-400 hover:underline cursor-pointer"
             >
               {authMode === "login" ? "Don't have an account? Sign up" : "Already registered? Log in"}
             </button>
@@ -944,9 +946,9 @@ if (generatedData.references) {
   const renderHistoryView = () => {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
-        <div className="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200/60 shadow-sm">
+        <div className="flex justify-between items-center glass-panel p-4 rounded-xl shadow-sm">
           <div>
-            <h2 className="text-lg font-bold text-slate-900 flex items-center gap-1.5">
+            <h2 className="text-lg font-bold text-white flex items-center gap-1.5">
               <History className="w-5 h-5 text-slate-500" />
               Your Generated Resumes History
             </h2>
@@ -954,17 +956,17 @@ if (generatedData.references) {
           </div>
           <button
             onClick={createNewResumeHandler}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-4 py-2 rounded-lg cursor-pointer"
+            className="bg-cyan-500 hover:bg-cyan-400 text-white font-medium text-xs px-4 py-2 rounded-lg cursor-pointer"
           >
             + Create New
           </button>
         </div>
 
         {savedResumes.length === 0 ? (
-          <div className="bg-white border rounded-2xl py-12 text-center text-slate-400 space-y-2">
+          <div className="bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl py-12 text-center text-slate-500 space-y-2">
             <FileText className="w-12 h-12 mx-auto text-slate-200" />
-            <h3 className="font-semibold text-slate-700 text-sm">No Saved Portfolios Found</h3>
-            <p className="text-xs max-w-xs mx-auto text-slate-400">
+            <h3 className="font-semibold text-slate-300 text-sm">No Saved Portfolios Found</h3>
+            <p className="text-xs max-w-xs mx-auto text-slate-500">
               Create a new resume in the builder and click "Save to Database" to preserve your historic records dynamically.
             </p>
           </div>
@@ -974,26 +976,26 @@ if (generatedData.references) {
               <div
                 key={resume._id}
                 onClick={() => loadSavedResume(resume)}
-                className="bg-white p-5 rounded-2xl border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md cursor-pointer transition flex flex-col justify-between gap-4 select-none"
+                className="glass-panel p-5 rounded-2xl hover:border-cyan-400/40 shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer transition flex flex-col justify-between gap-4 select-none"
               >
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-slate-400">{new Date(resume.updatedAt || "").toLocaleDateString()}</span>
+                    <span className="text-xs text-slate-500">{new Date(resume.updatedAt || "").toLocaleDateString()}</span>
                     {resume.atsScore ? (
-                      <span className="bg-indigo-50 border border-indigo-100/60 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                      <span className="bg-cyan-500/10 border border-fuchsia-500/20 text-fuchsia-300 text-[10px] font-bold px-2 py-0.5 rounded-full">
                         Score: {resume.atsScore}
                       </span>
                     ) : null}
                   </div>
-                  <h3 className="font-bold text-slate-900 text-sm leading-snug break-all">{resume.title}</h3>
+                  <h3 className="font-bold text-white text-sm leading-snug break-all">{resume.title}</h3>
                   <p className="text-xs text-slate-500 truncate">Candidate: {resume.resumeData?.personalInfo?.name || "Anonymous"}</p>
                 </div>
 
-                <div className="flex justify-between items-center border-t border-slate-100 pt-3 mt-1 text-xs">
-                  <span className="text-indigo-600 font-medium hover:underline flex items-center gap-1">Update fields <ChevronRight className="w-3 h-3" /></span>
+                <div className="flex justify-between items-center border-t border-white/5 pt-3 mt-1 text-xs">
+                  <span className="text-cyan-400 font-medium hover:underline flex items-center gap-1">Update fields <ChevronRight className="w-3 h-3" /></span>
                   <button
                     onClick={(e) => deleteSavedResume(resume._id || "", e)}
-                    className="p-1 px-2 hover:bg-slate-100 text-slate-400 hover:text-rose-600 rounded transition"
+                    className="p-1 px-2 hover:bg-white/5 text-slate-500 hover:text-rose-600 rounded transition"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -1012,24 +1014,24 @@ if (generatedData.references) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col gap-8">
         
         {/* Workspace controllers bar */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200/60 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="glass-panel p-4 rounded-xl shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <LayoutTemplate className="w-5 h-5 text-indigo-500" />
+            <LayoutTemplate className="w-5 h-5 text-cyan-400" />
             <input
               type="text"
               value={resumeTitle}
               onChange={(e) => setResumeTitle(e.target.value)}
-              className="text-base font-bold text-slate-900 bg-transparent border-b border-dashed border-slate-200 focus:border-indigo-500 focus:outline-none w-full sm:max-w-xs"
+              className="text-base font-bold text-white bg-transparent border-b border-dashed border-white/10 focus:border-cyan-400 focus:outline-none w-full sm:max-w-xs font-display"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end">
             {selectedLang !== "en-IN" && selectedLang !== "en-US" && (translatedResumeData || isTranslatingLocal) && (
-              <div className="flex items-center gap-1 bg-indigo-50 border border-indigo-100/30 p-1 rounded-lg mr-2 shadow-sm shrink-0">
+              <div className="flex items-center gap-1 bg-cyan-500/10 border border-fuchsia-500/20 p-1 rounded-lg mr-2 shadow-sm shrink-0">
                 <button
                   type="button"
                   onClick={() => setShowTranslated(false)}
-                  className={`px-2.5 py-1 text-[11px] font-bold rounded-md transition cursor-pointer ${!showTranslated ? "bg-white text-indigo-700 shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
+                  className={`px-2.5 py-1 text-[11px] font-bold rounded-md transition cursor-pointer ${!showTranslated ? "bg-white/10 text-cyan-300 shadow-sm" : "text-slate-500 hover:text-slate-200"}`}
                 >
                   English View
                 </button>
@@ -1037,7 +1039,7 @@ if (generatedData.references) {
                   type="button"
                   onClick={() => setShowTranslated(true)}
                   disabled={isTranslatingLocal}
-                  className={`px-2.5 py-1 text-[11px] font-bold rounded-md transition cursor-pointer flex items-center gap-1 ${showTranslated ? "bg-indigo-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
+                  className={`px-2.5 py-1 text-[11px] font-bold rounded-md transition cursor-pointer flex items-center gap-1 ${showTranslated ? "bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white shadow-sm" : "text-slate-500 hover:text-slate-200"}`}
                 >
                   {isTranslatingLocal ? (
                     <>
@@ -1051,7 +1053,7 @@ if (generatedData.references) {
             )}
             <button
               onClick={createNewResumeHandler}
-              className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-2 rounded-lg cursor-pointer"
+              className="bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-semibold px-3 py-2 rounded-lg cursor-pointer"
             >
               Clear Slate
             </button>
@@ -1059,7 +1061,7 @@ if (generatedData.references) {
               onClick={saveResumeToDatabase}
               disabled={isSavingResume}
               id="btn-save-database"
-              className="bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-medium text-xs px-4 py-2 rounded-lg shadow-sm cursor-pointer flex items-center gap-1.5"
+              className="bg-gradient-to-r from-cyan-500 to-fuchsia-500 hover:from-cyan-400 hover:to-fuchsia-400 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-lg glow-cyan cursor-pointer flex items-center gap-1.5"
             >
               {isSavingResume ? (
                 <>
@@ -1090,9 +1092,9 @@ if (generatedData.references) {
             />
 
             {/* Alternating Manual typing assistant terminal console */}
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm space-y-3">
+            <div className="glass-panel p-5 rounded-2xl shadow-sm space-y-3">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-500 block">Manual Typing Assistant Console</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block">Manual Typing Assistant Console</span>
                 <p className="text-xs text-slate-500 mt-1">Don't want to speak? Just copy-paste any unstructured text profile here, and AI will organize it instantly.</p>
               </div>
               <textarea
@@ -1100,13 +1102,13 @@ if (generatedData.references) {
                 onChange={(e) => setManualRawText(e.target.value)}
                 placeholder="Paste biographical info, LinkedIn text, or bullet notes here..."
                 rows={4}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
+                className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-sm rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 font-mono"
               />
               <button
                 onClick={() => parseContentWithGeminiAI(manualRawText)}
                 disabled={isProcessingManualText || !manualRawText}
                 id="btn-manual-parse-trigger"
-                className="w-full bg-slate-800 hover:bg-slate-900 disabled:opacity-50 text-white text-xs font-semibold py-2.5 rounded-xl flex items-center justify-center gap-1.5 pointer-events-auto cursor-pointer"
+                className="w-full bg-gradient-to-r from-cyan-500 to-fuchsia-500 hover:from-cyan-400 hover:to-fuchsia-400 disabled:opacity-50 text-white text-xs font-bold py-2.5 rounded-xl glow-cyan flex items-center justify-center gap-1.5 pointer-events-auto cursor-pointer"
               >
                 {isProcessingManualText ? (
                   <>
@@ -1123,26 +1125,26 @@ if (generatedData.references) {
             </div>
 
             {/* Dynamic visual parameters accordion manually override values */}
-            <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm overflow-hidden divide-y divide-slate-100">
-              <div className="p-4 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
-                <span className="text-xs font-bold text-slate-700 tracking-wider uppercase">Interactive Fields override</span>
-                <span className="text-[10px] text-slate-400 font-semibold uppercase">20 ATS Fields verified</span>
+            <div className="glass-panel rounded-2xl shadow-sm overflow-hidden divide-y divide-white/5">
+              <div className="p-4 bg-white/[0.03] border-b border-white/5 flex justify-between items-center">
+                <span className="text-xs font-bold text-slate-300 tracking-wider uppercase">Interactive Fields override</span>
+                <span className="text-[10px] text-slate-500 font-semibold uppercase">20 ATS Fields verified</span>
               </div>
 
               {/* Accordion 1: Personal Info overriding */}
               <div>
                 <button
                   onClick={() => setActiveAccordion((prev) => (prev === "personal" ? "" : "personal"))}
-                  className="w-full p-4 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer"
+                  className="w-full p-4 flex justify-between items-center text-left hover:bg-white/[0.03] transition cursor-pointer"
                 >
-                  <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                    <User className="w-4 h-4 text-indigo-500" /> 1. General Contact & Role Summary
+                  <span className="text-xs font-bold text-white flex items-center gap-2">
+                    <User className="w-4 h-4 text-cyan-400" /> 1. General Contact & Role Summary
                   </span>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${activeAccordion === "personal" ? "transform rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform ${activeAccordion === "personal" ? "transform rotate-180" : ""}`} />
                 </button>
 
                 {activeAccordion === "personal" && (
-                  <div className="p-4 bg-white space-y-4 border-t border-slate-50">
+                  <div className="p-4 bg-transparent space-y-4 border-t border-white/5">
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="text-[11px] font-semibold text-slate-500 block mb-1">Full Name</label>
@@ -1150,7 +1152,7 @@ if (generatedData.references) {
                           type="text"
                           value={resumeData.personalInfo.name}
                           onChange={(e) => handlePersonalInfoChange("name", e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                          className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                         />
                       </div>
                       <div>
@@ -1159,7 +1161,7 @@ if (generatedData.references) {
                           type="text"
                           value={resumeData.personalInfo.jobTitle}
                           onChange={(e) => handlePersonalInfoChange("jobTitle", e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                          className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                         />
                       </div>
                     </div>
@@ -1171,7 +1173,7 @@ if (generatedData.references) {
                           type="email"
                           value={resumeData.personalInfo.email}
                           onChange={(e) => handlePersonalInfoChange("email", e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                          className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                         />
                       </div>
                       <div>
@@ -1180,7 +1182,7 @@ if (generatedData.references) {
                           type="text"
                           value={resumeData.personalInfo.phone}
                           onChange={(e) => handlePersonalInfoChange("phone", e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                          className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                         />
                       </div>
                     </div>
@@ -1192,7 +1194,7 @@ if (generatedData.references) {
                           type="text"
                           value={resumeData.personalInfo.linkedin}
                           onChange={(e) => handlePersonalInfoChange("linkedin", e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                          className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                         />
                       </div>
                       <div>
@@ -1201,7 +1203,7 @@ if (generatedData.references) {
                           type="text"
                           value={resumeData.personalInfo.portfolio}
                           onChange={(e) => handlePersonalInfoChange("portfolio", e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                          className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                         />
                       </div>
                     </div>
@@ -1213,7 +1215,7 @@ if (generatedData.references) {
                         value={resumeData.personalInfo.location}
                         onChange={(e) => handlePersonalInfoChange("location", e.target.value)}
                         placeholder="New Delhi, India"
-                        className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                        className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                       />
                     </div>
 
@@ -1223,7 +1225,7 @@ if (generatedData.references) {
                         value={resumeData.personalInfo.summary}
                         onChange={(e) => handlePersonalInfoChange("summary", e.target.value)}
                         rows={3}
-                        className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                        className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -1234,18 +1236,18 @@ if (generatedData.references) {
               <div>
                 <button
                   onClick={() => setActiveAccordion((prev) => (prev === "experience" ? "" : "experience"))}
-                  className="w-full p-4 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer"
+                  className="w-full p-4 flex justify-between items-center text-left hover:bg-white/[0.03] transition cursor-pointer"
                 >
-                  <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-indigo-500" /> 2. Industrial Work History ({resumeData.experience.length})
+                  <span className="text-xs font-bold text-white flex items-center gap-2">
+                    <Briefcase className="w-4 h-4 text-cyan-400" /> 2. Industrial Work History ({resumeData.experience.length})
                   </span>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${activeAccordion === "experience" ? "transform rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform ${activeAccordion === "experience" ? "transform rotate-180" : ""}`} />
                 </button>
 
                 {activeAccordion === "experience" && (
-                  <div className="p-4 bg-white space-y-4 border-t border-slate-50">
+                  <div className="p-4 bg-transparent space-y-4 border-t border-white/5">
                     {resumeData.experience.map((exp, idx) => (
-                      <div key={idx} className="p-3 bg-slate-50 border rounded-xl space-y-2 relative">
+                      <div key={idx} className="p-3 bg-white/[0.03] border border-white/10 rounded-xl space-y-2 relative">
                         <button
                           onClick={() => {
                             setResumeData((prev) => ({
@@ -1253,11 +1255,11 @@ if (generatedData.references) {
                               experience: prev.experience.filter((_, i) => i !== idx),
                             }));
                           }}
-                          className="absolute top-2 right-2 text-slate-400 hover:text-rose-600 transition"
+                          className="absolute top-2 right-2 text-slate-500 hover:text-rose-600 transition"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
-                        <p className="text-xs font-bold text-slate-800">Job Entry #{idx + 1}</p>
+                        <p className="text-xs font-bold text-slate-200">Job Entry #{idx + 1}</p>
                         
                         <div className="grid grid-cols-2 gap-2">
                           <input
@@ -1269,7 +1271,7 @@ if (generatedData.references) {
                               updated[idx].company = e.target.value;
                               setResumeData((prev) => ({ ...prev, experience: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-xs text-slate-800 focus:outline-none"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-xs text-slate-200 focus:outline-none"
                           />
                           <input
                             type="text"
@@ -1280,7 +1282,7 @@ if (generatedData.references) {
                               updated[idx].position = e.target.value;
                               setResumeData((prev) => ({ ...prev, experience: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-xs text-slate-800 focus:outline-none"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-xs text-slate-200 focus:outline-none"
                           />
                         </div>
 
@@ -1294,7 +1296,7 @@ if (generatedData.references) {
                               updated[idx].startDate = e.target.value;
                               setResumeData((prev) => ({ ...prev, experience: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-[10px] text-slate-850"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-[10px] text-slate-200"
                           />
                           <input
                             type="text"
@@ -1305,7 +1307,7 @@ if (generatedData.references) {
                               updated[idx].endDate = e.target.value;
                               setResumeData((prev) => ({ ...prev, experience: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-[10px] text-slate-850"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-[10px] text-slate-200"
                           />
                           <input
                             type="text"
@@ -1316,7 +1318,7 @@ if (generatedData.references) {
                               updated[idx].location = e.target.value;
                               setResumeData((prev) => ({ ...prev, experience: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-[10px] text-slate-850"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-[10px] text-slate-200"
                           />
                         </div>
 
@@ -1329,7 +1331,7 @@ if (generatedData.references) {
                             updated[idx].description = e.target.value;
                             setResumeData((prev) => ({ ...prev, experience: updated }));
                           }}
-                          className="w-full bg-white border rounded p-1.5 text-xs text-slate-800 focus:outline-none"
+                          className="w-full bg-white/5 border border-white/10 rounded p-1.5 text-xs text-slate-200 focus:outline-none"
                         />
                       </div>
                     ))}
@@ -1344,7 +1346,7 @@ if (generatedData.references) {
                           ],
                         }));
                       }}
-                      className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs px-3 py-1.5 rounded-lg font-medium transition block border border-slate-200"
+                      className="bg-white/5 hover:bg-white/10 text-slate-200 text-xs px-3 py-1.5 rounded-lg font-medium transition block border border-white/10"
                     >
                       + Add Work Entry
                     </button>
@@ -1356,18 +1358,18 @@ if (generatedData.references) {
               <div>
                 <button
                   onClick={() => setActiveAccordion((prev) => (prev === "education" ? "" : "education"))}
-                  className="w-full p-4 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer"
+                  className="w-full p-4 flex justify-between items-center text-left hover:bg-white/[0.03] transition cursor-pointer"
                 >
-                  <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-indigo-500" /> 3. Education Profile ({resumeData.education.length})
+                  <span className="text-xs font-bold text-white flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-cyan-400" /> 3. Education Profile ({resumeData.education.length})
                   </span>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${activeAccordion === "education" ? "transform rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform ${activeAccordion === "education" ? "transform rotate-180" : ""}`} />
                 </button>
 
                 {activeAccordion === "education" && (
-                  <div className="p-4 bg-white space-y-4 border-t border-slate-50">
+                  <div className="p-4 bg-transparent space-y-4 border-t border-white/5">
                     {resumeData.education.map((edu, idx) => (
-                      <div key={idx} className="p-3 bg-slate-50 border rounded-xl space-y-2 relative">
+                      <div key={idx} className="p-3 bg-white/[0.03] border border-white/10 rounded-xl space-y-2 relative">
                         <button
                           onClick={() => {
                             setResumeData((prev) => ({
@@ -1375,11 +1377,11 @@ if (generatedData.references) {
                               education: prev.education.filter((_, i) => i !== idx),
                             }));
                           }}
-                          className="absolute top-2 right-2 text-slate-400 hover:text-rose-600 transition"
+                          className="absolute top-2 right-2 text-slate-500 hover:text-rose-600 transition"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
-                        <p className="text-xs font-bold text-slate-800">Academic Institution #{idx + 1}</p>
+                        <p className="text-xs font-bold text-slate-200">Academic Institution #{idx + 1}</p>
 
                         <div className="grid grid-cols-2 gap-2">
                           <input
@@ -1391,7 +1393,7 @@ if (generatedData.references) {
                               updated[idx].school = e.target.value;
                               setResumeData((prev) => ({ ...prev, education: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-xs text-slate-800 focus:outline-none"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-xs text-slate-200 focus:outline-none"
                           />
                           <input
                             type="text"
@@ -1402,7 +1404,7 @@ if (generatedData.references) {
                               updated[idx].degree = e.target.value;
                               setResumeData((prev) => ({ ...prev, education: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-xs text-slate-800 focus:outline-none"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-xs text-slate-200 focus:outline-none"
                           />
                         </div>
 
@@ -1416,7 +1418,7 @@ if (generatedData.references) {
                               updated[idx].fieldOfStudy = e.target.value;
                               setResumeData((prev) => ({ ...prev, education: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-[10px] text-slate-800"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-[10px] text-slate-200"
                           />
                           <input
                             type="text"
@@ -1427,7 +1429,7 @@ if (generatedData.references) {
                               updated[idx].startDate = e.target.value;
                               setResumeData((prev) => ({ ...prev, education: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-[10px] text-slate-800"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-[10px] text-slate-200"
                           />
                           <input
                             type="text"
@@ -1438,7 +1440,7 @@ if (generatedData.references) {
                               updated[idx].endDate = e.target.value;
                               setResumeData((prev) => ({ ...prev, education: updated }));
                             }}
-                            className="bg-white border rounded p-1.5 text-[10px] text-slate-800"
+                            className="bg-white/5 border border-white/10 rounded p-1.5 text-[10px] text-slate-200"
                           />
                         </div>
                       </div>
@@ -1454,7 +1456,7 @@ if (generatedData.references) {
                           ],
                         }));
                       }}
-                      className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs px-3 py-1.5 rounded-lg font-medium transition block border border-slate-200"
+                      className="bg-white/5 hover:bg-white/10 text-slate-200 text-xs px-3 py-1.5 rounded-lg font-medium transition block border border-white/10"
                     >
                       + Add Education Entry
                     </button>
@@ -1466,16 +1468,16 @@ if (generatedData.references) {
               <div>
                 <button
                   onClick={() => setActiveAccordion((prev) => (prev === "skills" ? "" : "skills"))}
-                  className="w-full p-4 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer"
+                  className="w-full p-4 flex justify-between items-center text-left hover:bg-white/[0.03] transition cursor-pointer"
                 >
-                  <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                    <Award className="w-4 h-4 text-indigo-500" /> 4. Keywords & Core Skills
+                  <span className="text-xs font-bold text-white flex items-center gap-2">
+                    <Award className="w-4 h-4 text-cyan-400" /> 4. Keywords & Core Skills
                   </span>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${activeAccordion === "skills" ? "transform rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform ${activeAccordion === "skills" ? "transform rotate-180" : ""}`} />
                 </button>
 
                 {activeAccordion === "skills" && (
-                  <div className="p-4 bg-white space-y-4 border-t border-slate-50">
+                  <div className="p-4 bg-transparent space-y-4 border-t border-white/5">
                     <div>
                       <label className="text-[11px] font-semibold text-slate-500 block mb-1">Technical Skills & Software Tools (Comma separated)</label>
                       <input
@@ -1488,7 +1490,7 @@ if (generatedData.references) {
                             skills: { ...(prev.skills || { soft: [] }), technical: list }
                           }));
                         }}
-                        className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                        className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                       />
                     </div>
 
@@ -1504,7 +1506,7 @@ if (generatedData.references) {
                             skills: { ...(prev.skills || { technical: [] }), soft: list }
                           }));
                         }}
-                        className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg p-2 focus:outline-none"
+                        className="w-full bg-white/[0.03] border border-white/10 text-slate-200 text-xs rounded-lg p-2 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -1514,13 +1516,13 @@ if (generatedData.references) {
 
             {/* Error messaging inside workspace panel */}
             {apiErrorMessage && (
-              <div className="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-xl text-xs leading-relaxed font-light">
+              <div className="bg-amber-500/10 border border-amber-500/30 text-amber-300 p-4 rounded-xl text-xs leading-relaxed font-light">
                 {apiErrorMessage}
               </div>
             )}
 
             {/* General system status credit details */}
-            <div className="p-4 rounded-2xl border border-slate-200/50 bg-white/40 shadow-inner flex items-center justify-between gap-2 text-[10px] text-slate-400">
+            <div className="p-4 rounded-2xl border border-white/5 bg-white/[0.02] shadow-inner flex items-center justify-between gap-2 text-[10px] text-slate-500">
               <span className="flex items-center gap-1"><Cpu className="w-3.5 h-3.5" /> API Sync Standard</span>
               <span className="font-light">ATS Level v4.5</span>
             </div>
@@ -1531,9 +1533,9 @@ if (generatedData.references) {
           <div className="lg:col-span-7 space-y-6">
             
             {/* Template select tabs */}
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm space-y-4">
+            <div className="glass-panel p-5 rounded-2xl shadow-sm space-y-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">Select Portfolio Theme Layout</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Select Portfolio Theme Layout</span>
                 <p className="text-xs text-slate-500 mt-1">Select an ATS-compliant template structure mapped to standard recruiter parsers.</p>
               </div>
 
@@ -1548,12 +1550,12 @@ if (generatedData.references) {
                     onClick={() => setTemplateId(temp.id)}
                     className={`p-3 rounded-xl border text-left transition ${
                       templateId === temp.id
-                        ? "border-indigo-600 bg-indigo-50/20 shadow-sm"
-                        : "border-slate-200 hover:border-slate-300"
+                        ? "border-cyan-400 bg-cyan-500/5 shadow-sm"
+                        : "border-white/10 hover:border-cyan-400/40"
                     } cursor-pointer`}
                   >
-                    <span className="text-xs font-bold text-slate-900 block">{temp.label}</span>
-                    <span className="text-[10px] text-slate-400 mt-0.5 block">{temp.desc}</span>
+                    <span className="text-xs font-bold text-white block">{temp.label}</span>
+                    <span className="text-[10px] text-slate-500 mt-0.5 block">{temp.desc}</span>
                   </button>
                 ))}
               </div>
@@ -1582,12 +1584,12 @@ if (generatedData.references) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/30 flex flex-col justify-between font-sans text-slate-800 relative overflow-x-hidden antialiased">
+    <div className="min-h-screen bg-transparent flex flex-col justify-between font-sans text-slate-200 relative overflow-x-hidden antialiased">
       
       {/* Decors & Ambient Blurs for Artistic Flair design */}
-      <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] bg-indigo-100/50 rounded-full blur-3xl opacity-60 z-0 pointer-events-none"></div>
-      <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl opacity-60 z-0 pointer-events-none"></div>
-      <div className="absolute top-[40%] right-[-10%] w-[400px] h-[400px] bg-indigo-50/40 rounded-full blur-3xl opacity-50 z-0 pointer-events-none"></div>
+      <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl opacity-60 z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-fuchsia-500/10 rounded-full blur-3xl opacity-60 z-0 pointer-events-none"></div>
+      <div className="absolute top-[40%] right-[-10%] w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-3xl opacity-50 z-0 pointer-events-none"></div>
 
       {/* Dynamic Navbar */}
       <div className="relative z-10 w-full">
@@ -1596,7 +1598,7 @@ if (generatedData.references) {
 
       {/* Floating success confirmation feedback node */}
       {successToast && (
-        <div className="fixed bottom-6 right-6 z-[100] max-w-sm bg-slate-900 text-white p-4 rounded-xl shadow-2xl border border-slate-800/80 slide-in-bottom flex items-center gap-2.5">
+        <div className="fixed bottom-6 right-6 z-[100] max-w-sm glass-panel text-white p-4 rounded-xl shadow-2xl slide-in-bottom flex items-center gap-2.5">
           <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
           <span className="text-xs font-semibold leading-relaxed">{successToast}</span>
         </div>
@@ -1611,26 +1613,26 @@ if (generatedData.references) {
       </main>
 
       {/* Standard brand information footer */}
-      <footer className="border-t border-slate-200/80 bg-white/70 backdrop-blur-md relative z-10">
+      <footer className="border-t border-white/10 bg-slate-950/60 backdrop-blur-xl relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2">
-            <span className="text-base font-extrabold tracking-tight text-slate-900">
-              VoiceCV<span className="text-indigo-600">.AI</span>
+            <span className="text-base font-extrabold tracking-tight text-white font-display">
+              VoiceCV<span className="text-cyan-400">.AI</span>
             </span>
             <p className="text-xs text-slate-500 max-w-sm font-light">
               Designing premium ATS certified modern multilingual portfolio interfaces using high-fidelity regional vocal recognition.
             </p>
           </div>
           
-          <div className="flex flex-wrap gap-x-8 gap-y-2 text-xs text-slate-600">
-            <a onClick={() => setCurrentView("home")} className="hover:text-slate-900 transition cursor-pointer">About</a>
-            <a onClick={() => { setCurrentView("builder"); }} className="hover:text-slate-900 transition cursor-pointer">Interactive Builder</a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition">GitHub</a>
-            <a className="hover:text-slate-900 transition cursor-pointer">Privacy Policy</a>
+          <div className="flex flex-wrap gap-x-8 gap-y-2 text-xs text-slate-500">
+            <a onClick={() => setCurrentView("home")} className="hover:text-white transition cursor-pointer">About</a>
+            <a onClick={() => { setCurrentView("builder"); }} className="hover:text-white transition cursor-pointer">Interactive Builder</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">GitHub</a>
+            <a className="hover:text-white transition cursor-pointer">Privacy Policy</a>
           </div>
         </div>
         
-        <div className="border-t border-slate-100 py-4 bg-slate-50 text-center text-[11px] text-slate-400">
+        <div className="border-t border-white/5 py-4 bg-white/[0.03] text-center text-[11px] text-slate-500">
           <span>© 2026 VoiceCV AI Web App Inc. All Rights Reserved.</span>
         </div>
       </footer>
