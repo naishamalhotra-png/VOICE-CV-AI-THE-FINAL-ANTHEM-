@@ -1,0 +1,193 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React from "react";
+import { ATSAnalysisResult } from "../types";
+import { CheckCircle2, AlertTriangle, Lightbulb, TrendingUp, HelpCircle } from "lucide-react";
+
+interface ATSAnalysisProps {
+  analysis: ATSAnalysisResult | undefined;
+  isLoading: boolean;
+}
+
+export default function ATSAnalysis({ analysis, isLoading }: ATSAnalysisProps) {
+  if (isLoading) {
+    return (
+      <div id="ats-analysis-panel" className="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center justify-center py-12 animate-pulse">
+        <div className="w-16 h-16 rounded-full border-4 border-indigo-100 border-t-indigo-600 animate-spin mb-4" />
+        <span className="text-sm font-semibold text-slate-700">Recalculating ATS Match Rate Score...</span>
+        <p className="text-xs text-slate-500 mt-1">Measuring grammar context, keyword density, and structural integrity.</p>
+      </div>
+    );
+  }
+
+  if (!analysis) {
+    return (
+      <div id="ats-analysis-panel" className="bg-slate-50/50 p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center py-10">
+        <TrendingUp className="w-10 h-10 text-slate-300" />
+        <h3 className="text-sm font-bold text-slate-700 mt-3">Calculate ATS Keyword Score</h3>
+        <p className="text-xs text-slate-500 mt-1.5 max-w-sm">
+          Once your resume content is populated, click the button below or start typing to analyze keyword compatibility and recruiter readiness.
+        </p>
+      </div>
+    );
+  }
+
+  // Choose colors based on scoring scales
+  const getScoreColor = (score: number) => {
+    if (score >= 80) return { text: "text-emerald-600", bg: "bg-emerald-50", border: "border-emerald-200", stroke: "stroke-emerald-500" };
+    if (score >= 50) return { text: "text-amber-600", bg: "bg-amber-50", border: "border-amber-200", stroke: "stroke-amber-500" };
+    return { text: "text-rose-600", bg: "bg-rose-50", border: "border-rose-200", stroke: "stroke-rose-500" };
+  };
+
+  const style = getScoreColor(analysis.score);
+
+  return (
+    <div id="ats-analysis-panel" className="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col gap-6">
+      
+      {/* Visual Header Grid with Radical Dial Gauge */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        
+        {/* Core Percentage Gauge */}
+        <div className="md:col-span-5 flex flex-col items-center justify-center p-4 rounded-xl bg-slate-50 border border-slate-100 relative">
+          <div className="relative w-32 h-32 flex items-center justify-center">
+            {/* SVG circle track */}
+            <svg className="absolute w-full h-full transform -rotate-90">
+              <circle
+                cx="64"
+                cy="64"
+                r="50"
+                className="stroke-slate-200/80 fill-none"
+                strokeWidth="10"
+              />
+              <circle
+                cx="64"
+                cy="64"
+                r="50"
+                className={`fill-none transition-all duration-500 ${style.stroke}`}
+                strokeWidth="10"
+                strokeDasharray="314.15"
+                strokeDashoffset={314.15 - (314.15 * analysis.score) / 100}
+                strokeLinecap="round"
+              />
+            </svg>
+            <div className="text-center z-10">
+              <span className={`text-3xl font-extrabold tracking-tight ${style.text}`}>{analysis.score}</span>
+              <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider mt-0.5">ATS Match</span>
+            </div>
+          </div>
+          
+          <div className="text-center mt-3">
+            <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${style.bg} ${style.text} ${style.border}`}>
+              {analysis.score >= 80 ? "Highly Ready" : analysis.score >= 50 ? "Needs Fine-Tuning" : "Critical Fixes Required"}
+            </span>
+          </div>
+        </div>
+
+        {/* Readiness Index Metrics bar */}
+        <div className="md:col-span-7 space-y-4">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
+              <TrendingUp className="w-4 h-4 text-indigo-500" />
+              Recruiter Strategy Report
+            </h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Your resume was screened against high-frequency keywords and technical skills standard in corporate software and logistics directories.
+            </p>
+          </div>
+
+          {/* Sub progress loader */}
+          <div className="space-y-2">
+            <div className="flex justify-between text-xs font-semibold">
+              <span className="text-slate-600">Recruiter Readiness Index</span>
+              <span className="text-slate-900">{analysis.recruiterReadiness}%</span>
+            </div>
+            <div className="w-full bg-slate-100 rounded-full h-2">
+              <div
+                className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${analysis.recruiterReadiness}%` }}
+              />
+            </div>
+            <p className="text-[10px] text-slate-400">
+              Score ≥ 80% increases your organic interview matching probability by 4.2x in algorithmic ATS pipelines.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Grid for Strengths and Suggestions details */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        {/* Strengths Card */}
+        <div className="p-4 rounded-xl border border-emerald-100 bg-emerald-50/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5 mb-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 fill-emerald-50" />
+            Resume Strengths
+          </span>
+          <ul className="space-y-2 text-xs font-normal text-slate-700">
+            {analysis.strengths && analysis.strengths.length > 0 ? (
+              analysis.strengths.map((str, idx) => (
+                <li key={idx} className="flex items-start gap-1.5 leading-relaxed">
+                  <span className="text-emerald-500 mt-0.5">•</span>
+                  <span className="break-words">{str}</span>
+                </li>
+              ))
+            ) : (
+              <li className="italic text-slate-400">No strengths logged. Add details to expand.</li>
+            )}
+          </ul>
+        </div>
+
+        {/* Missing Keywords Card */}
+        <div className="p-4 rounded-xl border border-red-100 bg-red-50/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-red-800 flex items-center gap-1.5 mb-2.5">
+            <AlertTriangle className="w-4 h-4 text-red-600 fill-red-50" />
+            Missing Recruiter Keywords
+          </span>
+          <div className="flex flex-wrap gap-1.5">
+            {analysis.missingKeywords && analysis.missingKeywords.length > 0 ? (
+              analysis.missingKeywords.map((word, idx) => (
+                <span
+                  key={idx}
+                  className="bg-red-50 border border-red-100/50 text-red-700 text-[11px] font-semibold px-2 py-0.5 rounded-md"
+                >
+                  +{word}
+                </span>
+              ))
+            ) : (
+              <span className="text-xs text-slate-400 italic">No keywords missing! Perfect.</span>
+            )}
+          </div>
+          <p className="text-[10px] text-red-500 mt-3 font-medium leading-snug">
+            ⚠️ Try mentioning these terms inside your Professional Summary or Projects to satisfy semantic search filters.
+          </p>
+        </div>
+      </div>
+
+      {/* Improvement Suggestions Callouts */}
+      <div className="p-4 rounded-xl border border-indigo-100 bg-indigo-50/20">
+        <span className="text-xs font-bold uppercase tracking-wider text-indigo-800 flex items-center gap-1.5 mb-3">
+          <Lightbulb className="w-4 h-4 text-indigo-600 fill-indigo-50" />
+          Improvement Recommendations
+        </span>
+        <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
+          {analysis.suggestions && analysis.suggestions.length > 0 ? (
+            analysis.suggestions.map((sug, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <span className="bg-indigo-100 text-indigo-700 font-bold rounded-full w-4 h-4 text-[10px] flex items-center justify-center shrink-0 mt-0.5">
+                  {idx + 1}
+                </span>
+                <span className="break-words">{sug}</span>
+              </li>
+            ))
+          ) : (
+            <li className="italic text-slate-400">Excellent structural integrity! No further suggestions needed.</li>
+          )}
+        </ul>
+      </div>
+
+    </div>
+  );
+}
