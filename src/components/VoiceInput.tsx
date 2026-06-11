@@ -344,11 +344,11 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
   };
 
   return (
-    <div id="voice-input-panel" className="bg-slate-50/50 p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col gap-6">
+    <div id="voice-input-panel" className="bg-white/[0.02] p-6 rounded-2xl border border-white/10 shadow-sm flex flex-col gap-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-semibold text-slate-900 flex items-center gap-2">
-            <Globe className="w-5 h-5 text-indigo-500" />
+          <h2 className="text-base font-semibold text-white flex items-center gap-2 font-display">
+            <Globe className="w-5 h-5 text-cyan-400" />
             Speak and Build Multilingual Resume
           </h2>
           <p className="text-xs text-slate-500 mt-1">
@@ -367,12 +367,12 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
               <Pause className="w-3.5 h-3.5 fill-current" /> Stop Voice
             </button>
           )}
-          <span className="text-xs font-medium text-slate-600 font-sans">Language:</span>
+          <span className="text-xs font-medium text-slate-500 font-sans">Language:</span>
           <select
             value={selectedLang}
             onChange={(e) => setSelectedLang(e.target.value)}
             disabled={isRecording || isLoading}
-            className="bg-white border border-slate-200 text-slate-700 text-xs font-normal rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 max-w-[180px] shadow-sm cursor-pointer"
+            className="bg-white/5 border border-white/10 text-slate-300 text-xs font-normal rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 max-w-[180px] shadow-sm cursor-pointer"
           >
             {INDIAN_LANGUAGES.map((lang) => (
               <option key={lang.code} value={lang.code}>
@@ -384,15 +384,15 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
       </div>
 
       {/* Action Center Card */}
-      <div className="flex flex-col items-center justify-center border border-dashed border-slate-200 rounded-xl bg-white p-6 relative overflow-hidden">
+      <div className="flex flex-col items-center justify-center border border-dashed border-white/10 rounded-xl bg-white/[0.02] p-6 relative overflow-hidden">
         
         {/* Animated Sound Waveforms */}
         {isRecording && (
-          <div className="absolute inset-x-0 bottom-0 top-0 bg-indigo-50/20 flex items-center justify-center gap-1 z-0 pointer-events-none">
+          <div className="absolute inset-x-0 bottom-0 top-0 bg-cyan-500/5 flex items-center justify-center gap-1 z-0 pointer-events-none">
             {[...Array(12)].map((_, i) => (
               <div
                 key={i}
-                className="w-1.5 bg-indigo-400/80 rounded-full animate-pulse"
+                className="w-1.5 bg-cyan-400/80 rounded-full animate-pulse"
                 style={{
                   height: `${Math.random() * 40 + 10}px`,
                   animationDelay: `${i * 0.15}s`,
@@ -410,7 +410,7 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
               onClick={startRecordingHandler}
               disabled={isLoading}
               id="btn-voice-mic-trigger"
-              className="w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white flex items-center justify-center shadow-lg hover:shadow-indigo-500/10 transition-all duration-150 transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-fuchsia-500 hover:from-cyan-300 hover:to-fuchsia-400 disabled:opacity-50 text-white flex items-center justify-center glow-cyan transition-all duration-150 transform hover:scale-105 active:scale-95 cursor-pointer"
             >
               <Mic className="w-6 h-6 animate-none" />
             </button>
@@ -418,7 +418,7 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
             <button
               onClick={stopRecordingHandler}
               id="btn-voice-stop-trigger"
-              className="w-14 h-14 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-lg hover:shadow-red-500/10 transition-all duration-150 transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-500/40 transition-all duration-150 transform hover:scale-105 active:scale-95 cursor-pointer pulse-glow"
             >
               <Square className="w-5 h-5 fill-current" />
             </button>
@@ -431,12 +431,12 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
                 Recording... {formatTime(recordDuration)}
               </span>
             ) : isLoading ? (
-              <span className="text-xs font-medium text-indigo-600 flex items-center gap-1.5">
+              <span className="text-xs font-medium text-cyan-400 flex items-center gap-1.5">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 Analyzing voice and translating speech via AI gateway...
               </span>
             ) : (
-              <span className="text-xs font-semibold text-slate-700">
+              <span className="text-xs font-semibold text-slate-300">
                 Click to Speak ("Talk about school, projects, or job history")
               </span>
             )}
@@ -446,7 +446,7 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
 
       {/* Errors display */}
       {errorText && (
-        <div className="bg-red-50 text-red-700 border border-red-200 p-3.5 rounded-lg text-xs leading-relaxed">
+        <div className="bg-red-500/10 text-red-300 border border-red-500/30 p-3.5 rounded-lg text-xs leading-relaxed">
           {errorText}
         </div>
       )}
@@ -455,28 +455,28 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
       {(regionalTranscript || englishTranslation) && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Regional text display */}
-          <div className="bg-white p-4 rounded-xl border border-slate-200/50 shadow-sm">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1.5">Original Transcript ({selectedLang.split("-")[0].toUpperCase()})</span>
-            <p className="text-sm font-semibold text-slate-800 break-words leading-relaxed bg-slate-50/50 p-2.5 rounded-lg border border-slate-100">
+          <div className="glass-panel p-4 rounded-xl shadow-sm">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">Original Transcript ({selectedLang.split("-")[0].toUpperCase()})</span>
+            <p className="text-sm font-semibold text-slate-200 break-words leading-relaxed bg-white/[0.02] p-2.5 rounded-lg border border-white/5">
               {regionalTranscript || "Waiting..."}
             </p>
           </div>
 
           {/* English Translation */}
-          <div className="bg-white p-4 rounded-xl border border-slate-200/50 shadow-sm flex flex-col justify-between">
+          <div className="glass-panel p-4 rounded-xl shadow-sm flex flex-col justify-between">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-500 block mb-1.5 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-indigo-500 fill-indigo-100" />
+              <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block mb-1.5 flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400 fill-cyan-500/20" />
                 AI English Extraction
               </span>
-              <p className="text-sm text-slate-700 font-light break-words leading-relaxed bg-indigo-50/30 p-2.5 rounded-lg border border-indigo-100/20">
+              <p className="text-sm text-slate-300 font-light break-words leading-relaxed bg-fuchsia-500/5 p-2.5 rounded-lg border border-cyan-500/15">
                 {englishTranslation || "Extracting summary..."}
               </p>
             </div>
 
             {/* Read Feedback Block */}
             {aiSpeechFeedback && (
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-1.5 text-xs text-slate-500">
                   <Volume2 className="w-4 h-4 text-emerald-500" />
                   <span>AI Verbal Feedback translated back:</span>
@@ -484,14 +484,14 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
                 {!isSpeaking ? (
                   <button
                     onClick={() => speakFeedbackAloud(aiSpeechFeedback)}
-                    className="flex items-center gap-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 text-[11px] font-medium px-2.5 py-1 rounded-md transition cursor-pointer"
+                    className="flex items-center gap-1 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 text-[11px] font-medium px-2.5 py-1 rounded-md transition cursor-pointer"
                   >
                     <Play className="w-3 h-3 fill-current" /> Play
                   </button>
                 ) : (
                   <button
                     onClick={stopSpeakingAloud}
-                    className="flex items-center gap-1 bg-red-50 text-red-700 hover:bg-red-100 text-[11px] font-medium px-2.5 py-1 rounded-md transition cursor-pointer"
+                    className="flex items-center gap-1 bg-red-500/10 text-red-300 hover:bg-red-500/20 text-[11px] font-medium px-2.5 py-1 rounded-md transition cursor-pointer"
                   >
                     <Pause className="w-3 h-3 fill-current" /> Stop
                   </button>
