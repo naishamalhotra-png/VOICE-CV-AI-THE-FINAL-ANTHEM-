@@ -1,0 +1,10 @@
+{
+  "projectId": "voicecv-ai",
+  "appId": "1:521249295087:web:63c1c1d9ed58c8f5e5691a",
+  "apiKey": "AIzaSyDDSq8M1EewDzyiNPBBfF0ThfLksHYb5rQ",
+  "authDomain": "voicecv-ai.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-b84e23d3-7505-4400-8204-1ff576c0f2ad",
+  "storageBucket": "voicecv-ai.firebasestorage.app",
+  "messagingSenderId": "521249295087",
+  "measurementId": ""
+}
