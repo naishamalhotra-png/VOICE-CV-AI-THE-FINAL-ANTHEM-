@@ -814,15 +814,15 @@ export default function ResumePreview({
   return (
     <div className="w-full flex flex-col gap-4">
       {/* Actions bar */}
-      <div className="flex justify-between items-center bg-white px-4 py-3 rounded-xl border border-slate-200/60 shadow-sm">
-        <span className="text-sm font-medium text-slate-700 flex items-center gap-1.5">
-          <CheckSquare className="w-4 h-4 text-emerald-500" />
+      <div className="flex justify-between items-center glass-panel px-4 py-3 rounded-xl shadow-sm">
+        <span className="text-sm font-medium text-slate-200 flex items-center gap-1.5 font-display">
+          <CheckSquare className="w-4 h-4 text-emerald-400" />
           ATS Verified Template Preview
         </span>
         <button
           onClick={downloadPDFHandler}
           id="btn-download-pdf-preview"
-          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-4 py-2 rounded-lg shadow transition-all duration-150 active:scale-95"
+          className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-fuchsia-500 hover:from-cyan-400 hover:to-fuchsia-400 text-white font-bold text-xs px-4 py-2 rounded-lg glow-cyan transition-all duration-150 active:scale-95"
         >
           <Download className="w-3.5 h-3.5" />
           Download ATS-Friendly PDF
@@ -830,7 +830,7 @@ export default function ResumePreview({
       </div>
 
       {/* Preview frame */}
-      <div className="w-full overflow-x-auto bg-slate-100/50 p-2 sm:p-6 rounded-2xl border border-slate-200/60 shadow-inner flex justify-center">
+      <div className="w-full overflow-x-auto glass-panel p-2 sm:p-6 rounded-2xl shadow-inner flex justify-center">
         <div
           ref={containerRef}
           id="active-resume-printable-area"
