@@ -14,7 +14,7 @@ export default defineConfig(() => {
     server: {
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
-      allowedHosts: ['voicecv-ai-resume.onrender.com', 'voicecvai-forked.onrender.com','localhost'],  // ✅ add this
+      allowedHosts: ['voicecv-ai-resume.onrender.com', 'voicecvai-forked.onrender.com','voice-cv-ai.onrender.com','localhost'],  // ✅ add this
     },
   };
 });
