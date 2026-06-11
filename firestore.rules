@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Default Deny Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Global Helper Primitives (Phase 3)
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // 3. Entity Integrity Validation Helpers (Phase 4)
+    function isValidUser(data) {
+      return data.keys().hasAll(['userId', 'email'])
+        && data.keys().size() >= 2
+        && data.keys().size() <= 6
+        && data.userId is string
+        && data.userId.size() <= 128
+        && data.userId == request.auth.uid
+        && data.email is string
+        && data.email.size() <= 256
+        && (!data.keys().hasAny(['name']) || (data.name is string && data.name.size() <= 128))
+        && (!data.keys().hasAny(['role', 'isAdmin'])); // Prevent escalation (Ghost & Privilege injection)
+    }
+
+    function isValidResume(data) {
+      return data.keys().hasAll(['userId', 'title', 'resumeData'])
+        && data.keys().size() >= 3
+        && data.keys().size() <= 9
+        && data.userId is string
+        && data.userId.size() <= 128
+        && data.userId == request.auth.uid
+        && data.title is string
+        && data.title.size() <= 200
+        && data.resumeData is map
+        && (!data.keys().hasAny(['templateId']) || (data.templateId is string && data.templateId.size() <= 64))
+        && (!data.keys().hasAny(['atsScore']) || (data.atsScore is int && data.atsScore >= 0 && data.atsScore <= 100))
+        && (!data.keys().hasAny(['atsAnalysis']) || (data.atsAnalysis is map));
+    }
+
+    // 4. Physical Path Access Control
+    match /users/{userId} {
+      // Path Variable Hardening (ID poisoning protection)
+      allow get: if isValidId(userId) && isOwner(userId);
+      
+      // Profiles can only be modified by the verified owner. Private data is secured.
+      allow create, update: if isValidId(userId) && isOwner(userId) && isValidUser(incoming());
+      allow delete: if false; // System policy forbids direct client deletions
+    }
+
+    match /resumes/{resumeId} {
+      // Path Variable Hardening
+      allow get: if isValidId(resumeId) && isOwner(existing().userId);
+      
+      // Safe List Queries: evaluation is forced against resource ownership fields directly
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+
+      allow create: if isValidId(resumeId) 
+                    && isOwner(incoming().userId) 
+                    && isValidResume(incoming());
+
+      allow update: if isValidId(resumeId) 
+                    && isOwner(existing().userId) 
+                    && isOwner(incoming().userId)
+                    && isValidResume(incoming())
+                    && incoming().userId == existing().userId; // Immutable Owner
+
+      allow delete: if isValidId(resumeId) && isOwner(existing().userId);
+    }
+  }
+}
