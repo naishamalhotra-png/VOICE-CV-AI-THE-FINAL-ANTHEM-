@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account demographic profile details containing basic contact info",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique Firebase Authentication UID representing the owner of this account"
+        },
+        "email": {
+          "type": "string",
+          "description": "The primary verified contact email of this account"
+        },
+        "name": {
+          "type": "string",
+          "description": "The custom user profile name of this account"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The precise Firestore server timestamp signifying account registration date"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The precise Firestore server timestamp of the latest profile edits"
+        }
+      },
+      "required": ["userId", "email"]
+    },
+    "Resume": {
+      "title": "Resume",
+      "description": "Job applicant resume profiles containing structured credentials, templates, and ATS grading insights",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The Firebase Authentication owner UID who created and can view this resume"
+        },
+        "title": {
+          "type": "string",
+          "description": "Display title of the resume document"
+        },
+        "resumeData": {
+          "type": "object",
+          "description": "Nested structured candidate data (education, work experience, projects, skills, certifications, etc.)"
+        },
+        "atsScore": {
+          "type": "integer",
+          "description": "The extracted ATS alignment matching score out of 100"
+        },
+        "atsAnalysis": {
+          "type": "object",
+          "description": "Optional detailed ATS analysis breakdown metrics (missing keywords, suggestions, strengths)"
+        },
+        "templateId": {
+          "type": "string",
+          "description": "The active presentation template identifier used to style PDF and layout sheets"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The precise date and time of original creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The precise date and time of latest revisions"
+        }
+      },
+      "required": ["userId", "title", "resumeData"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "User collection mapped to individual Firebase Auth IDs"
+    },
+    "/resumes/{resumeId}": {
+      "schema": {
+        "$ref": "#/entities/Resume"
+      },
+      "description": "Full collection of all saved resumes"
+    }
+  }
+}
