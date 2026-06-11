@@ -1,8 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Space Grotesk", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #05060d;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(34, 211, 238, 0.10), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(217, 70, 239, 0.10), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.08), transparent 50%);
+}
+
+/* Subtle animated grid backdrop used on the app shell */
+.grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* Glass surface used for cards / panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background-image: linear-gradient(90deg, #22d3ee 0%, #818cf8 50%, #e879f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated hue-shifting gradient text, for hero headline accents */
+.gradient-text-animated {
+  background-image: linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6, #22d3ee);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 6s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 1px gradient border using padding-box / border-box trick */
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(8, 9, 18, 0.9), rgba(8, 9, 18, 0.9)) padding-box,
+    linear-gradient(120deg, rgba(34,211,238,0.55), rgba(168,85,247,0.45), rgba(244,114,182,0.5)) border-box;
+}
+
+/* Soft glow shadow for primary CTAs */
+.glow-cyan {
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25), 0 8px 30px -8px rgba(34, 211, 238, 0.55);
+}
+.glow-fuchsia {
+  box-shadow: 0 0 0 1px rgba(232, 121, 249, 0.25), 0 8px 30px -8px rgba(232, 121, 249, 0.5);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+/* Slim custom scrollbar for a more "console" feel */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(34,211,238,0.35), rgba(217,70,239,0.35));
+  border-radius: 9999px;
+  border: 2px solid #05060d;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #fff;
 }
