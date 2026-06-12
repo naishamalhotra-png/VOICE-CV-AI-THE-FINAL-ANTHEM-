@@ -344,10 +344,13 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
   };
 
   return (
-    <div id="voice-input-panel" className="bg-white/[0.02] p-6 rounded-2xl border border-white/10 shadow-sm flex flex-col gap-6">
+  <div
+  id="voice-input-panel"
+  className="relative overflow-hidden bg-white/[0.04] backdrop-blur-3xl p-8 rounded-[32px] border border-white/10 shadow-[0_0_60px_rgba(34,211,238,0.08)] flex flex-col gap-8"
+>
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-semibold text-white flex items-center gap-2 font-display">
+        <h2 className="text-xl font-bold text-white flex items-center gap-3 font-display tracking-tight">
             <Globe className="w-5 h-5 text-cyan-400" />
             Speak and Build Multilingual Resume
           </h2>
@@ -372,8 +375,8 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
             value={selectedLang}
             onChange={(e) => setSelectedLang(e.target.value)}
             disabled={isRecording || isLoading}
-            className="bg-white/5 border border-white/10 text-slate-300 text-xs font-normal rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 max-w-[180px] shadow-sm cursor-pointer"
-          >
+            className="bg-white/[0.05] backdrop-blur-xl border border-white/10 text-slate-200 text-sm rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 max-w-[220px] shadow-lg shadow-cyan-500/5 cursor-pointer transition-all duration-300 hover:border-cyan-400/30"
+            >
             {INDIAN_LANGUAGES.map((lang) => (
               <option key={lang.code} value={lang.code}>
                 {lang.name}
@@ -384,7 +387,7 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
       </div>
 
       {/* Action Center Card */}
-      <div className="flex flex-col items-center justify-center border border-dashed border-white/10 rounded-xl bg-white/[0.02] p-6 relative overflow-hidden">
+      <div className="relative overflow-hidden flex flex-col items-center justify-center border border-white/10 rounded-[32px] bg-gradient-to-br from-cyan-500/5 via-white/[0.03] to-fuchsia-500/5 p-10 backdrop-blur-2xl">
         
         {/* Animated Sound Waveforms */}
         {isRecording && (
@@ -410,7 +413,7 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
               onClick={startRecordingHandler}
               disabled={isLoading}
               id="btn-voice-mic-trigger"
-              className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-fuchsia-500 hover:from-cyan-300 hover:to-fuchsia-400 disabled:opacity-50 text-white flex items-center justify-center glow-cyan transition-all duration-150 transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white flex items-center justify-center shadow-[0_0_60px_rgba(34,211,238,0.55)] transition-all duration-500 hover:scale-110 active:scale-95 cursor-pointer"
             >
               <Mic className="w-6 h-6 animate-none" />
             </button>
@@ -418,7 +421,7 @@ const speakFeedbackAloud = async (textToSpeak: string) => {
             <button
               onClick={stopRecordingHandler}
               id="btn-voice-stop-trigger"
-              className="w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-500/40 transition-all duration-150 transform hover:scale-105 active:scale-95 cursor-pointer pulse-glow"
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-pink-500 text-white flex items-center justify-center shadow-[0_0_60px_rgba(239,68,68,0.55)] transition-all duration-500 hover:scale-110 active:scale-95 cursor-pointer pulse-glow"
             >
               <Square className="w-5 h-5 fill-current" />
             </button>
