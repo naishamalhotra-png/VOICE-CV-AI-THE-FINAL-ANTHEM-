@@ -724,10 +724,10 @@ if (generatedData.references) {
         {/* Hero Area */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 py-12 relative">
           <div className="absolute inset-x-0 top-0 h-[420px] grid-backdrop pointer-events-none -z-10"></div>
-         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.04] border border-cyan-400/20 backdrop-blur-xl text-cyan-300 text-xs font-bold uppercase tracking-[0.25em] shadow-[0_0_30px_rgba(34,211,238,0.12)]"></div>
-            <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
-            Empowered by Sarvam AI & NVIDIA AI
-          </div>
+         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.04] border border-cyan-400/20 backdrop-blur-xl text-cyan-300 text-xs font-bold uppercase tracking-[0.25em] shadow-[0_0_30px_rgba(34,211,238,0.12)]">
+  <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
+  Empowered by Sarvam AI & NVIDIA AI
+</div>
           
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight max-w-5xl mx-auto leading-[1.05] font-display">
             Build Professional ATS-Friendly Resumes{" "}
