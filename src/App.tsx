@@ -652,14 +652,14 @@ if (generatedData.references) {
   // General Navbar component
   const renderNavbar = () => {
     return (
-      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/60 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-slate-950/30 backdrop-blur-3xl shadow-[0_0_40px_rgba(34,211,238,0.08)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo */}
           <div
             onClick={() => setCurrentView("home")}
             className="flex items-center gap-2.5 cursor-pointer transition active:scale-95 group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all duration-300 group-hover:scale-105 group-hover:rotate-3">
+           <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 flex items-center justify-center shadow-[0_0_40px_rgba(34,211,238,0.45)] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
               <Mic className="w-4.5 h-4.5 text-white" />
             </div>
             <span className="text-xl font-black tracking-tight text-white font-display">
@@ -724,12 +724,12 @@ if (generatedData.references) {
         {/* Hero Area */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 py-12 relative">
           <div className="absolute inset-x-0 top-0 h-[420px] grid-backdrop pointer-events-none -z-10"></div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-fuchsia-300 text-xs font-bold uppercase tracking-wider shadow-sm shadow-cyan-500/10">
+         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.04] border border-cyan-400/20 backdrop-blur-xl text-cyan-300 text-xs font-bold uppercase tracking-[0.25em] shadow-[0_0_30px_rgba(34,211,238,0.12)]"></div>
             <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
             Empowered by Sarvam AI & NVIDIA AI
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-[1.12] font-display">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight max-w-5xl mx-auto leading-[1.05] font-display">
             Build Professional ATS-Friendly Resumes{" "}
             <span className="gradient-text-animated font-serif italic font-normal">
               With Your Voice.
@@ -782,7 +782,7 @@ if (generatedData.references) {
                 { step: "03", title: "AI Real-time Structuring", desc: "Sarvam & AI translate and format details into 20 mandatory fields." },
                 { step: "04", title: "Review & Save", desc: "Fine-tune with live ATS scoring suggestions, select your template, and download standard PDF." }
               ].map((item, idx) => (
-                <div key={idx} className="bg-white/[0.03] backdrop-blur-xl p-6 rounded-3xl border border-cyan-500/20 shadow-lg shadow-cyan-500/10 relative space-y-3 transition-all hover:-translate-y-1 hover:border-fuchsia-400/40 hover:shadow-fuchsia-500/20">
+                <div key={idx} className="group bg-white/[0.04] backdrop-blur-2xl p-7 rounded-[30px] border border-white/10 shadow-2xl shadow-black/30 relative space-y-4 transition-all duration-500 hover:-translate-y-4 hover:scale-[1.03] hover:border-cyan-400/40 hover:shadow-[0_0_50px_rgba(34,211,238,0.15)]">
                   <span className="text-3xl font-black gradient-text font-display block">{item.step}</span>
                   <h3 className="font-bold text-white text-sm">{item.title}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-light">{item.desc}</p>
@@ -810,7 +810,7 @@ if (generatedData.references) {
               { title: "Real-Time Preview", desc: "Every edit in details updates the active templates instantly. Know exactly how it looks before saving." },
               { title: "AI Content Enhancement", desc: "Automatically translates conversational speech transcripts into standard recruiter action items." }
             ].map((feat, idx) => (
-              <div key={idx} className="p-6 rounded-3xl border border-cyan-500/15 bg-white/[0.03] backdrop-blur-xl shadow-md shadow-black/20 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 space-y-3">
+              <div key={idx} className="group p-7 rounded-[30px] border border-white/10 bg-white/[0.04] backdrop-blur-2xl shadow-xl shadow-black/20 hover:border-cyan-400/40 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(34,211,238,0.12)] transition-all duration-500 space-y-4">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/15 to-fuchsia-500/15 flex items-center justify-center text-cyan-400">
                   <CheckCircle className="w-5 h-5 text-cyan-400" />
                 </div>
