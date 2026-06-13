@@ -724,20 +724,20 @@ if (generatedData.references) {
         {/* Hero Area */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 py-12 relative">
           <div className="absolute inset-x-0 top-0 h-[420px] grid-backdrop pointer-events-none -z-10"></div>
-         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.04] border border-cyan-400/20 backdrop-blur-xl text-cyan-300 text-xs font-bold uppercase tracking-[0.25em] shadow-[0_0_30px_rgba(34,211,238,0.12)]">
-  <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
-  Empowered by Sarvam AI & NVIDIA AI
-</div>
+       <div className="hero-badge inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full backdrop-blur-xl text-cyan-300 text-[11px] font-bold uppercase tracking-[0.22em]">
+            <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span>
+            Powered by SARVAM AI AND  NVIDIA 
+          </div>
           
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight max-w-5xl mx-auto leading-[1.05] font-display">
-            Build Professional ATS-Friendly Resumes{" "}
-            <span className="gradient-text-animated font-serif italic font-normal">
-              With Your Voice.
+         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-[-0.03em] max-w-5xl mx-auto leading-[1.02] font-display">
+            Build Resumes That{" "}
+            <span className="block gradient-text-animated font-display italic font-extrabold">
+              Actually Get Interviews.
             </span>
           </h1>
           
-          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed font-light">
-            Speak in any Indian regional language. Our system transcribes, structures, translates to English, and compiles printable job portfolios in seconds.
+         <p className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed font-light tracking-[-0.01em]">
+            Speak Hindi, Tamil, Marathi — or any Indian language. We transcribe, structure, and compile ATS-optimized resumes in seconds.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -1632,11 +1632,19 @@ if (generatedData.references) {
           </div>
         </div>
         
-        <div className="border-t border-white/5 py-4 bg-white/[0.03] text-center text-[11px] text-slate-500">
-          <span>© 2026 VoiceCV AI Web App Inc. All Rights Reserved.</span>
+       {/* Floating Mic Quick-Access in Footer */}
+        <div className="border-t border-white/5 py-5 bg-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-8">
+          <span className="text-[11px] text-slate-500 order-2 sm:order-1">© 2026 VoiceCV AI. All Rights Reserved.</span>
+          <button
+            onClick={() => {
+              if (currentUser) { setCurrentView("builder"); } else { setAuthMode("register"); setCurrentView("auth"); }
+            }}
+            className="mic-footer-btn order-1 sm:order-2 flex items-center gap-2.5 text-white font-bold text-xs px-5 py-2.5 rounded-full cursor-pointer"
+            title="Open Voice Builder"
+          >
+            <Mic className="w-4 h-4" />
+            Start Speaking
+          </button>
         </div>
-      </footer>
-
-    </div>
   );
 }
