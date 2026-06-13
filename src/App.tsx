@@ -1645,6 +1645,9 @@ if (generatedData.references) {
             <Mic className="w-4 h-4" />
             Start Speaking
           </button>
-        </div>
+</div>
+      </footer>
+
+    </div>
   );
 }
