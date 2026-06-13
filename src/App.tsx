@@ -729,10 +729,10 @@ if (generatedData.references) {
             Powered by SARVAM AI AND  NVIDIA 
           </div>
           
-         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-[-0.03em] max-w-5xl mx-auto leading-[1.02] font-display">
-            Build Resumes That{" "}
-            <span className="block gradient-text-animated font-display italic font-extrabold">
-              Actually Get Interviews.
+     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-[-0.02em] max-w-3xl mx-auto leading-[1.15] font-display">
+            Build Resumes That Actually{" "}
+            <span className="gradient-text-animated font-display italic font-bold">
+              Get Interviews.
             </span>
           </h1>
           
